@@ -1,6 +1,13 @@
 # challenge-03
 JavaScript Challenge: Password Generator
 
+Following the acceptance criteria order, the password generator raises a series of prompts:
+1) "Enter password length within the range of 8 - 128 characters."
+2) "Include lowercase?"
+3) "Include uppercase?"
+4) "Include numerals?"
+5) "Include special characters?"
+
 <!-- ACCEPTANCE CRITERIA:
     GIVEN I need a new, secure password 
     WHEN I click the button to generate a password

@@ -1,32 +1,28 @@
-// Assignment code here
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+//Array Charater Sets used for password generation
 var lowerCaseArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 var upperCaseArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-var numericArray = ['0','1','2','3','4','5','6','7','8','9']
-var specialCharactersArray = ['!','@','#','$','%','^','&','*',"(",")",'_','+']
+var numericArray = ['0','1','2','3','4','5','6','7','8','9'];
+var specialCharactersArray = ['!','@','#','$','%','^','&','*',"(",")",'_','+'];
 
-function generatePassword() {
-  console.log("this works")
+// Get references to the #generate element
+// Assignment code here
+var generateBtn = document.querySelector("#generate");
 
-  //pw criteria prompt: LENGTH 8 < 128 CHARACTER LIMIT. window prompt
-  var passwordLength = prompt("Enter password length within the range of 8 - 128 characters.");
-  if (passwordLength < 8) {
-    alert('Password must be at least 8 characters.');
-    return;
-  }
-  if (passwordLength > 128) {
-    alert('Password must be less than 128 characters.');
-    return;
-  } 
+//pw criteria prompt #1: LENGTH 8 < 128 CHARACTER LIMIT. window prompt
+function passwordCriteria () {
+  var passwordLength = parseInt(prompt("Enter password length within the range of 8 - 128 characters."))
+  console.log(passwordLength)
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert('Password must be within the 8 - 128 character range.')
+    passwordCriteria();
+    }     
 
-  //pw criteria prompt: include LOWER, UPPER, NUM, SPECIAL CHARACTER options
+  //pw criteria prompt #2: include LOWER, UPPER, NUM, SPECIAL CHARACTER options
   var passwordLowerCase = confirm("Include lowercase?");
   var passwordUpperCase = confirm("Include uppercase?");
   var passwordNumeric = confirm("Include numerals?");
   var passwordSpecialCharacters = confirm("Include special characters?");
-  console.log(passwordLowerCase, passwordUpperCase, passwordNumeric, passwordSpecialCharacters)
+  console.log(passwordLowerCase)
 
   if(!passwordLowerCase && !passwordUpperCase && !passwordNumeric && !passwordSpecialCharacters) {
     alert("Password needs at least one character set in order to be generated.")
@@ -46,7 +42,7 @@ function generatePassword() {
   }
 
   //randomize characters
-  function random(arr) {
+  function random (arr) {
     var index = Math.floor(Math.random()* arr.length)
     var element = arr[index]
     return element
@@ -54,8 +50,8 @@ function generatePassword() {
   console.log(random(specialCharactersArray))
 
 //generate password using above selected criteria
-//function generatePassword() {
-  var choices = generatePassword()
+function generatePassword() {
+  var choices = passwordCriteria()
   var finalResult = []
   var possibleCharacters = []
   var guaranteeCharacters = []
@@ -74,23 +70,21 @@ function generatePassword() {
   if(choices.specialCharacters) {
     possibleCharacters= possibleCharacters.concat(specialCharactersArray)
     guaranteeCharacters.push(random(specialCharactersArray))
-  }
+  }  
 
-  //all arrays randomized in possibleCharacters
+  //possibeCharacters combines all confirmed arrays
   for(var i = 0; i < choices.length; i++) {
     var character = random(possibleCharacters)
-    finalResult[i] = guaranteeCharacters
+    finalResult.push(character)
   }
-  //selected arrays in guaranteeCharacters
+  //guaranteeCharacters selects at least one character from the selected arrays
   for(var i = 0; i < guaranteeCharacters.length; i++) {
     finalResult[i] = guaranteeCharacters[i]
   }
-  //combine guaranteeCharacters with random
+  //joins the guaranteedCharacters in the randomly generated password
   return finalResult.join("")
+
 }
-  //display password
-
-
 
 // Write password to the #password input
 function writePassword() {
