@@ -16,8 +16,18 @@ function generatePassword() {
     alert('Password must be less than 128 characters.');
     return;
   } 
-  }
+
   //pw criteria prompt: include LOWER, UPPER, NUM, SPECIAL CHARACTER options
+  var passwordLowerCase = confirm("Include lowercase?");
+  var passwordUpperCase = confirm("Include uppercase?");
+  var passwordNumeric = confirm("Include numerals?");
+  var passwordSpecialCharacters = confirm("Include special characters?");
+  if(!passwordLowerCase && !passwordUpperCase && !passwordNumeric && !passwordSpecialCharacters) {
+    alert("Password needs at least one character set in order to be generated.")
+    return;
+  }
+
+  }
   //validate input
 
   //generate password using above selected criteria
