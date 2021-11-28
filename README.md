@@ -8,6 +8,17 @@ Following the acceptance criteria order, the password generator raises a series 
 4) "Include numerals?"
 5) "Include special characters?"
 
+After specifying allowed length & character types, a password is randomly generated. If the user does not satisifactorily answer prompts, a password will not be generated.
+
+Javascript reads logically (Character Arrays, generateBtn, criteria prompts, password generation, text display of said generation, event listener) with psuedocode commentary headlining the real code.
+
+Live URL
+https://escowin.github.io/challenge-03/
+
+GitHub Repository
+https://github.com/escowin/challenge-03
+
+![password generator screenshot](assets/images/screenshot.jpg)
 <!-- ACCEPTANCE CRITERIA:
     GIVEN I need a new, secure password 
     WHEN I click the button to generate a password
