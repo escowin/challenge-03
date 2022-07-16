@@ -12,15 +12,25 @@ var numericCharacters = [
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 ];
 var specialCharacters = [
-  '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '~', '?', '.', ':'
+  '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', "`", '{', '|', '}', '~'
 ];
 
 var passwordCriteria = function() {
+  // password length prompt
+  var length = parseInt(window.prompt("set a password length between 8 - 128 characters long"));
+  // conditional | if length outside number range
+  if (length < 8 || length > 128) {
+    window.alert("password length outside acceptable range.")
+    return null;
+  }
+
   // password character prompts
   var includeLowerCase = window.confirm("include lowercase?");
   var includeUpperCase = window.confirm("include uppercase?");
   var includeNumeric = window.confirm("include numeric?");
   var includeSpecialCharcters = window.confirm("include special characters?");
+
+  // 
 
   // bug - only one array will display regardless of multiple criteria selected
   if (includeLowerCase) {
