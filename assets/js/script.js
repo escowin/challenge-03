@@ -21,13 +21,29 @@ var passwordCriteria = function() {
   var includeUpperCase = window.confirm("include uppercase?");
   var includeNumeric = window.confirm("include numeric?");
   var includeSpecialCharcters = window.confirm("include special characters?");
+
+  // bug - only one array will display regardless of multiple criteria selected
+  if (includeLowerCase) {
+    return lowerCasedCharacters;
+  }
+  if (includeUpperCase) {
+    return upperCasedCharacters;
+  }
+  if (includeNumeric) {
+    return numericCharacters;
+  }
+  if (includeSpecialCharcters) {
+    return specialCharacters;
+  }
 }
 
-// Logic
+// Logic | password generated dependent on criteria selected.
 var generatePassword = function() {
   var criteria = passwordCriteria();
   if (!criteria) {
     return "cannot generate password, all criteria declined.";
+  } else {
+    return criteria
   }
 }
 
