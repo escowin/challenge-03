@@ -15,18 +15,20 @@ var specialCharacters = [
   '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '~', '?', '.', ':'
 ];
 
+var passwordCriteria = function() {
+  // password character prompts
+  var includeLowerCase = window.confirm("include lowercase?");
+  var includeUpperCase = window.confirm("include uppercase?");
+  var includeNumeric = window.confirm("include numeric?");
+  var includeSpecialCharcters = window.confirm("include special characters?");
+}
+
 // Logic
 var generatePassword = function() {
-    // password character prompts
-    var includeLowerCase = window.confirm("include lowercase?");
-    var includeUpperCase = window.confirm("include uppercase?");
-    var includeNumeric = window.confirm("include numeric?");
-    var includeSpecialCharcters = window.confirm("include special characters?");
-    if (includeLowerCase, includeUpperCase, includeNumeric, includeSpecialCharcters) {
-      return "this is the password.";
-    } else {
-      return "nothing";
-    }
+  var criteria = passwordCriteria();
+  if (!criteria) {
+    return "cannot generate password, all criteria declined.";
+  }
 }
 
 // Write password to the #password input
