@@ -16,9 +16,8 @@ var specialCharacters = [
 ];
 
 var passwordCriteria = function() {
-  // password length prompt
+  // password length prompt followed by if conditional statement to check if length falls outside acceptable range.
   var length = parseInt(window.prompt("set a password length between 8 - 128 characters long"));
-  // conditional | if length outside number range
   if (length < 8 || length > 128) {
     window.alert("password length outside acceptable range.")
     return null;
@@ -28,32 +27,40 @@ var passwordCriteria = function() {
   var includeLowerCase = window.confirm("include lowercase?");
   var includeUpperCase = window.confirm("include uppercase?");
   var includeNumeric = window.confirm("include numeric?");
-  var includeSpecialCharcters = window.confirm("include special characters?");
+  var includeSpecialCharacters = window.confirm("include symbols?");
 
-  // 
+  // conditional, value is null if no characters arrays are selected
+  if (
+    includeLowerCase === false && 
+    includeUpperCase === false && 
+    includeNumeric === false && 
+    includeSpecialCharacters === false
+  ) {
+    return null;
+  }
 
-  // bug - only one array will display regardless of multiple criteria selected
-  if (includeLowerCase) {
-    return lowerCasedCharacters;
-  }
-  if (includeUpperCase) {
-    return upperCasedCharacters;
-  }
-  if (includeNumeric) {
-    return numericCharacters;
-  }
-  if (includeSpecialCharcters) {
-    return specialCharacters;
-  }
+  // user input
+  var selectedCriteria = {
+    length: length,
+    includeLowerCase: lowerCasedCharacters,
+    includeUpperCase: includeUpperCase,
+    includeNumeric: includeNumeric,
+    includeSpecialCharacters: includeSpecialCharacters
+  };
+  return selectedCriteria;
 }
 
 // Logic | password generated dependent on criteria selected.
 var generatePassword = function() {
   var criteria = passwordCriteria();
+  
+  // conditional statement - checking if criteria 
   if (!criteria) {
-    return "cannot generate password, all criteria declined.";
-  } else {
-    return criteria
+    return "cannot generate password without selecting a character set";
+  }
+
+  if (criteria.includeLowerCase) {
+    return criteria.includeLowerCase.length;
   }
 }
 
