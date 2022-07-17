@@ -11,7 +11,7 @@ var upperCasedCharacters = [
 var numericCharacters = [
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 ];
-var specialCharacters = [
+var symbolCharacters = [
   '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', "`", '{', '|', '}', '~'
 ];
 
@@ -27,14 +27,14 @@ var passwordCriteria = function() {
   var includeLowerCase = window.confirm("include lowercase?");
   var includeUpperCase = window.confirm("include uppercase?");
   var includeNumeric = window.confirm("include numeric?");
-  var includeSpecialCharacters = window.confirm("include symbols?");
+  var includeSymbols = window.confirm("include symbols?");
 
   // conditional, value is null if no characters arrays are selected
   if (
     includeLowerCase === false && 
     includeUpperCase === false && 
     includeNumeric === false && 
-    includeSpecialCharacters === false
+    includeSymbols === false
   ) {
     return null;
   }
@@ -45,30 +45,70 @@ var passwordCriteria = function() {
     includeLowerCase: lowerCasedCharacters,
     includeUpperCase: includeUpperCase,
     includeNumeric: includeNumeric,
-    includeSpecialCharacters: includeSpecialCharacters
+    includeSymbols: includeSymbols
   };
+
   return selectedCriteria;
+}
+
+// logic | random
+var getRandom = function(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex];
+
+  return randomElement;
 }
 
 // Logic | password generated dependent on criteria selected.
 var generatePassword = function() {
   var criteria = passwordCriteria();
   
+  var result = [];
+  var possibleCharacters = [];
+  var guaranteedCharacters = [];
+
   // conditional statement - checking if criteria 
-  if (!criteria) {
-    return "cannot generate password without selecting a character set";
+  if (!criteria) return "password cannot be generated, select at least one character type.";
+
+  // -  lowercase
+  if (criteria.includeLowerCase) {
+    possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+    guaranteedCharacters.push(getRandom(lowerCasedCharacters));
   }
 
-  if (criteria.includeLowerCase) {
-    return criteria.includeLowerCase.length;
+  // -  uppercase
+  if (criteria.includeUpperCase) {
+    possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+    guaranteedCharacters.push(getRandom(upperCasedCharacters));
   }
+  // -  numeric
+  if (criteria.includeNumeric) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+    guaranteedCharacters.push(getRandom(numericCharacters));
+  }
+
+  if (criteria.includeSymbols) {
+    possibleCharacters = possibleCharacters.concat(symbolCharacters);
+    guaranteedCharacters.push(getRandom(symbolCharacters));
+  }
+
+  for (var i = 0; i < criteria.length; i++) {
+    var possibleCharacter = getRandom(possibleCharacters);
+
+    result.push(possibleCharacter);
+  }
+
+  return result.join('');
 }
 
 // Write password to the #password input
-function writePassword() {
+var writePassword = function() {
+  // password invokes generatePassword() for its value
   var password = generatePassword();
+  // passwordText selects <#password> from document
   var passwordText = document.querySelector("#password");
 
+  // populates <#password> with password variable value
   passwordText.value = password;
 }
 
