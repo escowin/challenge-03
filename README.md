@@ -15,7 +15,7 @@
 
 ## Screenshot
 
-    ![Sreenshot](assets/images/password-generator.jpg)
+![Sreenshot](assets/images/password-generator.jpg)
 
 ## Author
 
