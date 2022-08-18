@@ -1,7 +1,19 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// dom.elements
+const generateBtn = document.querySelector("#generate");
+const rangeSliderEl = document.querySelector("#range-slider");
+const numericInputEl = document.querySelector("#numeric-input");
 
-// Character Arrays
+// logic.sync range slider & numeric values
+const syncLength = function(e) {
+  const value = e.target.value;
+  rangeSliderEl.value = value;
+  numericInputEl.value = value;
+};
+
+rangeSliderEl.addEventListener('input', syncLength);
+numericInputEl.addEventListener('input', syncLength);
+
+// data.character-arrays
 var lowerCasedCharacters = [
   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ];

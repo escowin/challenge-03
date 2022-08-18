@@ -34,8 +34,8 @@
         <form id="parameters">
           <label for="length">Length</label>
           <div id="length-inputs">
-            <input id="range-input" type="range" min="8" max="128" value="12" id="length-range">
-            <input id="number-input" type="number" min="8" max="128" value="12" id="length-number">            
+            <input id="range-slider" type="range" min="8" max="128" value="12">
+            <input id="numeric-input" type="number" min="8" max="128" value="12">            
           </div>
 
           <label for="uppercase">Uppercase</label>
@@ -49,9 +49,11 @@
 
           <label for="symbols">Symbols</label>
           <input type="checkbox" id="symbols">
+
+          
         </form>
           
-        <button id="generate" class="btn">Generate Password</button>   
+        <button id="generate" type="submit" class="btn">Generate Password</button>   
 
       </section>
     </main>
