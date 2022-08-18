@@ -63,8 +63,9 @@ header, #password-generator, footer {
   appearance: none;
   resize: none;
   padding: 2.5vh;
-  height: 7.75rem;
+  height: 6rem;
   margin: 2.5vh 0;
+  word-break: break-all;
 }
 
 #password, .btn, a {
@@ -87,6 +88,62 @@ header, #password-generator, footer {
   font-weight: bolder;
   text-shadow: 0 0 1vw var(--accent);
 }
+
+#parameters {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1vh 2vw;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5vh 0 5vh 0;
+  text-align: left;
+  font-size: 1rem;
+}
+
+#length-inputs {
+  display: flex;
+  align-items: center;
+}
+
+
+#range-input {
+  appearance: none;
+  outline: none;
+  margin: 0 1vw;
+  opacity: 80%;
+  width: 100%;
+  height: 1.25vh;
+  color: var(--tertiary);
+  background-color: var(--accent);
+  box-shadow: 0 0 1vw var(--accent);
+  border-radius: 1rem;
+}
+
+#range-input::-webkit-slider-thumb {
+  background-color: var(--primary);
+  box-shadow: 0 0 .75vw var(--primary);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  height: .75rem;
+  width: .75rem;
+  border-radius: 50%;
+  border: none;
+}
+
+#number-input {
+  background-color: var(--accent);
+  box-shadow: 0 0 1vw var(--accent);
+  width: 2rem;
+  outline: none;
+  border-radius: .2rem;
+  border: none;
+  color: var(--primary);
+  text-shadow: 0 0 1.25vw var(--primary);
+  text-align: center;
+}
+
+/* to-do: checkmark styles */
 
 .btn {
   color: var(--primary);
