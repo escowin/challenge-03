@@ -189,12 +189,30 @@ a:active {
 
 /* display.small-desktop */
 @media screen and (min-width: 1024px) {
+  #password-generator {
+    margin: 2.25vh 0 .5vh 0;
+    padding: 2.5vw;
+    width: 75vh;
+  }
+
   header {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+
+  #password, #parameters, .btn {
+    font-size: 1rem;
+  }
+
+  #password {
+    height: 6rem;
+  }
+
+  #parameters {
+    width: 80%;
   }
 
   .btn {
-    padding: 2vh;
+    width: 50%;
   }
 
   .btn:hover {
@@ -208,7 +226,15 @@ a:active {
 
 /* display.large-desktop */
 @media screen and (min-width: 1440px) {
+  #password-generator {
+    margin: 1vh 0 .5vh 0;
+  }
+
   h2 {
     font-size: 2.75rem;
+  }
+
+  #parameters, .btn {
+    font-size: 1.25rem;
   }
 }
