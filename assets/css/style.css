@@ -27,6 +27,14 @@ body, #password:focus {
   background-color: var(--primary);
 }
 
+h1::selection, h2::selection, footer::selection, a::selection {
+  color: var(--primary);
+}
+
+#password::selection {
+  background-color: var(--secondary);
+}
+
 header, #password-generator, footer {
   text-shadow: 0 0 1vw var(--secondary);
 }
