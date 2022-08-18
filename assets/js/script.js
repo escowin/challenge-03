@@ -98,6 +98,7 @@ var generatePassword = function() {
     result.push(possibleCharacter);
   }
 
+  console.log("https://github.com/escowin/password-generator");
   return result.join('');
 }
 
