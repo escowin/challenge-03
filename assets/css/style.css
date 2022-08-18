@@ -2,136 +2,148 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html,
-body,
-.wrapper {
-  height: 100%;
   margin: 0;
   padding: 0;
 }
 
+:root {
+  --primary: rgb(60, 32, 32);
+  --secondary: rgba(201, 127, 127, 0.9);
+  --tertiary: rgba(25, 22, 22, 0.656);
+  --accent: rgba(255, 216, 216, 0.75);
+}
+
 body {
-  font-family: sans-serif;
-  background-color: #44494d;
+  color: var(--secondary);
+  font-variant: small-caps;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+body, #password:focus {
+  background-color: var(--primary);
 }
 
-header {
-  text-align: center;
-  padding: 20px;
-  padding-top: 0px;
-  color: hsl(206, 19%, 70%);
+header, #password-generator, footer {
+  text-shadow: 0 0 1vw var(--secondary);
 }
 
-.card {
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 5px;
-  border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
-  font-size: 18px;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 30px 40px;
-}
-
-.card-header::after {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
-.card-body {
-  min-height: 100px;
-}
-
-.card-footer {
+#password-generator, #password {
+  border-radius: 1rem;
   text-align: center;
 }
 
-.card-footer::before {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
-.card-footer::after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
-.btn {
-  border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
-  color: hsl(0, 0%, 100%);
-  display: inline-block;
-  font-size: 22px;
-  line-height: 22px;
-  margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
-  text-align: center;
-  cursor: pointer;
-}
-
-button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
-}
-
-.float-right {
-  float: right;
+#password-generator {
+  background-color: var(--tertiary);
+  box-shadow: 0 0 5vw var(--secondary);
+  width: 80vw;
+  margin: 5vh 0 2.5vh 0;
+  padding: 5vw;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
 }
 
 #password {
+  color: var(--primary);
+  outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
   resize: none;
-  overflow: hidden;
+  padding: 2.5vh;
+  height: 7.75rem;
+  margin: 2.5vh 0;
 }
 
-@media (max-width: 690px) {
-  .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
+#password, .btn, a {
+  transition: 1s;
+}
+
+#password, .btn {
+  border: none;
+  width: 100%;
+  box-shadow: 0 0 2.5vw var(--secondary);
+}
+
+#password, .btn:active {
+  background-color: var(--accent);
+}
+
+#password:focus {
+  color: var(--accent);
+  box-shadow: 0 0 2.5vw var(--primary), inset 0 0 2.5vw var(--accent);
+  font-weight: bolder;
+  text-shadow: 0 0 1vw var(--accent);
+}
+
+.btn {
+  color: var(--primary);
+  padding: .75vh 2vw;
+  border-radius: .75rem;
+  background-color: var(--secondary);
+  text-shadow: 0 0 .75vw var(--primary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  color: var(--accent);
+  text-shadow: 0 0 1vw var(--secondary);
+}
+
+/* display.tablet */
+@media screen and (min-width: 768px) {
+  header {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 
   #password {
-    font-size: 1rem;
+    margin: 5vh 0;
+    height: 8rem;
+  }
+
+  #password, .btn {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    padding: 1.75vh;
   }
 }
 
-@media (max-width: 500px) {
+/* display.small-desktop */
+@media screen and (min-width: 1024px) {
+  header {
+    font-size: 2rem;
+  }
+
   .btn {
-    font-size: 0.8rem;
+    padding: 2vh;
+  }
+
+  .btn:hover {
+    background-color: var(--accent);
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+}
+
+/* display.large-desktop */
+@media screen and (min-width: 1440px) {
+  h2 {
+    font-size: 2.75rem;
   }
 }

@@ -68,7 +68,7 @@ var generatePassword = function() {
   var guaranteedCharacters = [];
 
   // conditional statement - checking if criteria 
-  if (!criteria) return "password cannot be generated, select at least one character type.";
+  if (!criteria) return "new password could not be generated, try again";
 
   // -  lowercase
   if (criteria.includeLowerCase) {
