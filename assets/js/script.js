@@ -2,6 +2,7 @@
 const generateBtn = document.querySelector("#generate");
 const rangeSliderEl = document.querySelector("#range-slider");
 const numericInputEl = document.querySelector("#numeric-input");
+const parametersEl = document.querySelector("#parameters");
 
 // logic.sync range slider & numeric values
 const syncLength = function(e) {
@@ -9,9 +10,6 @@ const syncLength = function(e) {
   rangeSliderEl.value = value;
   numericInputEl.value = value;
 };
-
-rangeSliderEl.addEventListener('input', syncLength);
-numericInputEl.addEventListener('input', syncLength);
 
 // data.character-arrays
 var lowerCasedCharacters = [
@@ -26,6 +24,8 @@ var numericCharacters = [
 var symbolCharacters = [
   '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', "`", '{', '|', '}', '~'
 ];
+
+
 
 var passwordCriteria = function() {
   // password length prompt followed by if conditional statement to check if length falls outside acceptable range.
@@ -125,5 +125,9 @@ var writePassword = function() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
+// event-listeners
+rangeSliderEl.addEventListener('input', syncLength);
+numericInputEl.addEventListener('input', syncLength);
+
+// **to-do change to submit; incorporate .btn into <#parameters>; refactor code by removing window prompts, look for form checked box values to determine the parameters of the password
 generateBtn.addEventListener("click", writePassword);
