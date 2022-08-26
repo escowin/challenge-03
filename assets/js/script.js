@@ -1,3 +1,12 @@
+// current date
+function currentYear() {
+  let date = new Date().getFullYear();
+  const dateEl = document.getElementById("date")
+  dateEl.textContent = date;
+}
+
+currentYear();
+
 // dom.elements
 const generateBtn = document.querySelector("#generate");
 const rangeSliderEl = document.querySelector("#range-slider");
