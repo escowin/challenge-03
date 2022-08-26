@@ -1,4 +1,4 @@
-// current date
+// logic.current-date
 function currentYear() {
   let date = new Date().getFullYear();
   const dateEl = document.getElementById("date")
@@ -7,35 +7,44 @@ function currentYear() {
 
 currentYear();
 
-// dom.elements
-const generateBtn = document.querySelector("#generate");
+// logic.sync range slider & numeric values
 const rangeSliderEl = document.querySelector("#range-slider");
 const numericInputEl = document.querySelector("#numeric-input");
-const parametersEl = document.querySelector("#parameters");
-
-// logic.sync range slider & numeric values
-const syncLength = function(e) {
+const syncValues = function(e) {
   const value = e.target.value;
   rangeSliderEl.value = value;
   numericInputEl.value = value;
 };
 
-// data.character-arrays
-var lowerCasedCharacters = [
+rangeSliderEl.addEventListener('input', syncValues);
+numericInputEl.addEventListener('input', syncValues);
+
+
+
+// data.dom
+const generateBtn = document.querySelector("#generate");
+const parametersEl = document.querySelector("#parameters");
+
+// calls
+
+
+
+// data.arrays
+const lowercased = [
   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ];
-var upperCasedCharacters = [
+const uppercased = [
   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ];
-var numericCharacters = [
+const numeric = [
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 ];
-var symbolCharacters = [
+const symbols = [
   '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', "`", '{', '|', '}', '~'
 ];
 
 
-
+// logic.password-criteria
 var passwordCriteria = function() {
   // password length prompt followed by if conditional statement to check if length falls outside acceptable range.
   var length = parseInt(window.prompt("set a password length between 8 - 128 characters long"));
@@ -134,9 +143,5 @@ var writePassword = function() {
   passwordText.value = password;
 }
 
-// event-listeners
-rangeSliderEl.addEventListener('input', syncLength);
-numericInputEl.addEventListener('input', syncLength);
-
 // **to-do change to submit; incorporate .btn into <#parameters>; refactor code by removing window prompts, look for form checked box values to determine the parameters of the password
-generateBtn.addEventListener("click", writePassword);
+// generateBtn.addEventListener("click", writePassword);
