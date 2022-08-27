@@ -4,7 +4,7 @@ const rangeSliderEl = document.getElementById("range-slider");
 const numericInputEl = document.getElementById("numeric-input");
 const lowercaseEl = document.getElementById("lowercase");
 const uppercaseEl = document.getElementById("uppercase");
-const numeralEl = document.getElementById("uppercase");
+const numeralsEl = document.getElementById("numerals");
 const symbolsEl = document.getElementById("symbols");
 const generateButton = document.getElementById("generate");
 
@@ -34,7 +34,22 @@ numericInputEl.addEventListener('input', syncedValues);
 
 // logic.generating the password
 const generatePassword = function(passwordLength, includeLowercase, includeUppercase, includeNumerals, includeSymbols) {
-  console.log("hello");
+  var length = passwordLength;
+  console.log(length);
+
+  if (includeLowercase === true) {
+    console.log("lowercase selected")
+  }
+  if (includeUppercase === true) {
+    console.log("uppercase selected")
+  }
+  if (includeNumerals === true) {
+    console.log("numerals selected")
+  }
+  if (includeSymbols === true) {
+    console.log("symbols selected")
+  }
+
 };
 
 // event-listener.checks criteria, calls generatePassword()
@@ -44,7 +59,7 @@ generatorFormEl.addEventListener('submit', e => {
   const passwordLength = numericInputEl.value;
   const includeLowercase = lowercaseEl.checked;
   const includeUppercase = uppercaseEl.checked;
-  const includeNumerals = numeralEl.checked;
+  const includeNumerals = numeralsEl.checked;
   const includeSymbols = symbolsEl.checked;
 
   const password = generatePassword(passwordLength, includeLowercase, includeUppercase, includeNumerals, includeSymbols);
