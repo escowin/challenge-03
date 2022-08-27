@@ -27,7 +27,7 @@ header, #password-generator, footer {
   text-shadow: 0 0 1vw var(--secondary);
 }
 
-#password-generator, #password {
+#password-generator, #password-display {
   border-radius: 1rem;
   text-align: center;
 }
@@ -60,7 +60,7 @@ body, #password:focus {
   flex-direction: column;
 }
 
-#password {
+#password-display {
   color: var(--primary);
   outline: none;
   -webkit-appearance: none;
@@ -73,17 +73,17 @@ body, #password:focus {
   word-break: break-all;
 }
 
-#password, #generate, a {
+#password-display, #generate, a {
   transition: 1s;
 }
 
-#password, #generate {
+#password-display, #generate {
   border: none;
   width: 100%;
   box-shadow: 0 0 2.5vw var(--secondary);
 }
 
-#password, #generate:active {
+#password-display, #generate:active {
   background-color: var(--accent);
 }
 
@@ -199,12 +199,12 @@ a:active {
     font-size: 2.25rem;
   }
 
-  #password {
+  #password-display {
     margin: 5vh 0;
     height: 8rem;
   }
 
-  #password, #generate {
+  #password-display, #generate {
     font-size: 1.25rem;
   }
 
@@ -225,11 +225,11 @@ a:active {
     font-size: 1.5rem;
   }
 
-  #password, #generator, #generate {
+  #password-display, #generator, #generate {
     font-size: 1rem;
   }
 
-  #password {
+  #password-display {
     height: 6rem;
   }
 
