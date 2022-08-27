@@ -9,57 +9,45 @@
     <script defer src="./assets/js/script.js"></script>
   </head>
   <body>
-    <header>
-      <h1>Password generator</h1>
-    </header>
-
     <main id="password-generator">
-      <!-- password header -->
-      <section>
-        <h2>Meeting the public need of passwords since 2021</h2>
-      </section>
+      <header>
+        <h1>Password generator</h1>
+      </header>
 
       <!-- password display -->
-      <section>
-        <textarea
-          readonly
-          id="password"
-          placeholder="Your new password awaits"
-          aria-label="Generated Password"
-        ></textarea>
-      </section>
+      <textarea
+        readonly
+        id="password"
+        placeholder="Your new password awaits"
+        aria-label="Generated Password"
+      ></textarea>
 
       <!-- password parameters -->
-      <section class="form">
-        <form id="parameters">
-          <label for="length">Length</label>
-          <div id="length-inputs">
-            <input id="range-slider" type="range" min="8" max="128" value="12">
-            <input id="numeric-input" type="number" min="8" max="128" value="12">            
-          </div>
+      <form id="generator">
+        <label for="length">Length</label>
+        <div id="length-inputs">
+          <input id="range-slider" type="range" min="8" max="128" value="12">
+          <input id="numeric-input" type="number" min="8" max="128" value="12">            
+        </div>
 
-          <label for="uppercase">Uppercase</label>
-          <input class="checkmark" type="checkbox" id="uppercase">
+        <label for="lowercase">Lowercase</label>
+        <input class="checkmark" type="checkbox" id="lowercase">
 
-          <label for="lowercase">Lowercase</label>
-          <input class="checkmark" type="checkbox" id="lowercase">
+        <label for="uppercase">Uppercase</label>
+        <input class="checkmark" type="checkbox" id="uppercase">
 
-          <label for="numbers">Numbers</label>
-          <input class="checkmark" type="checkbox" id="numbers">
+        <label for="numbers">Numbers</label>
+        <input class="checkmark" type="checkbox" id="numbers">
 
-          <label for="symbols">Symbols</label>
-          <input class="checkmark" type="checkbox" id="symbols">
+        <label for="symbols">Symbols</label>
+        <input class="checkmark" type="checkbox" id="symbols">
 
-          
-        </form>
-          
-        <button id="generate" type="submit" class="btn">Generate Password</button>   
+        <button id="generate" type="submit">Generate Password</button>             
+      </form>
 
-      </section>
+      <footer>
+        &copy;2021 - <span id="date"></span> <a href="https://github.com/escowin/password-generator" target="_blank">Edwin m. escobar</a>
+      </footer>
     </main>
-
-    <footer>
-      &copy;2021 - <span id="date">hey</span> <a href="https://github.com/escowin/password-generator" target="_blank">Edwin m. escobar</a>
-    </footer>
   </body>
 </html>

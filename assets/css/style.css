@@ -1,11 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --primary: rgb(60, 32, 32);
   --secondary: rgba(201, 127, 127, 0.9);
@@ -13,26 +5,22 @@
   --accent: rgba(255, 216, 216, 0.75);
 }
 
-body {
-  color: var(--secondary);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-variant: small-caps;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
-body, #password:focus {
-  background-color: var(--primary);
+/* typography */
+footer {
+  font-size: .75rem;
 }
 
-h1::selection, h2::selection, footer::selection, a::selection {
+h1::selection, footer::selection, a::selection {
   color: var(--primary);
-}
-
-#password::selection {
-  background-color: var(--secondary);
 }
 
 header, #password-generator, footer {
@@ -44,12 +32,29 @@ header, #password-generator, footer {
   text-align: center;
 }
 
+/* box */
+body {
+  color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body, #password:focus {
+  background-color: var(--primary);
+}
+
+#password::selection {
+  background-color: var(--secondary);
+}
 #password-generator {
   background-color: var(--tertiary);
   box-shadow: 0 0 5vw var(--secondary);
   width: 80vw;
   margin: 5vh 0 2.5vh 0;
-  padding: 5vw;
+  padding: 5vw 5vw 2.5vw 5vw;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
@@ -68,17 +73,17 @@ header, #password-generator, footer {
   word-break: break-all;
 }
 
-#password, .btn, a {
+#password, #generate, a {
   transition: 1s;
 }
 
-#password, .btn {
+#password, #generate {
   border: none;
   width: 100%;
   box-shadow: 0 0 2.5vw var(--secondary);
 }
 
-#password, .btn:active {
+#password, #generate:active {
   background-color: var(--accent);
 }
 
@@ -89,13 +94,13 @@ header, #password-generator, footer {
   text-shadow: 0 0 1vw var(--accent);
 }
 
-#parameters {
+#generator {
   display: grid;
   grid-template-columns: auto auto;
   gap: 1vh 2vw;
   justify-content: center;
   align-items: center;
-  margin: 2.5vh 0 5vh 0;
+  margin: 2.5vh auto 5vh auto;
   text-align: left;
   font-size: 1rem;
 }
@@ -108,9 +113,8 @@ header, #password-generator, footer {
 #range-slider {
   appearance: none;
   outline: none;
-  margin: 0 1vw;
+  margin: 0 1vw 0 0;
   opacity: 80%;
-  width: 100%;
   height: 1.25vh;
   color: var(--tertiary);
   background-color: var(--accent);
@@ -133,13 +137,23 @@ header, #password-generator, footer {
 #numeric-input {
   background-color: var(--accent);
   box-shadow: 0 0 1vw var(--accent);
-  width: 2rem;
+  width: 1.75rem;
   outline: none;
   border-radius: .2rem;
   border: none;
   color: var(--primary);
   text-shadow: 0 0 1.25vw var(--primary);
   text-align: center;
+}
+
+#numeric-input::-webkit-outer-spin-button,
+#numeric-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#numeric-input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .checkmark {
@@ -155,12 +169,14 @@ header, #password-generator, footer {
   background-color: var(--secondary);
 }
 
-.btn {
+#generate {
   color: var(--primary);
+  margin-top: 1rem;
   padding: .75vh 2vw;
   border-radius: .75rem;
   background-color: var(--secondary);
   text-shadow: 0 0 .75vw var(--primary);
+  grid-column: span 2;
 }
 
 a {
@@ -179,8 +195,8 @@ a:active {
     font-size: 1.75rem;
   }
 
-  h2 {
-    font-size: 2rem;
+  h1 {
+    font-size: 2.25rem;
   }
 
   #password {
@@ -188,11 +204,11 @@ a:active {
     height: 8rem;
   }
 
-  #password, .btn {
+  #password, #generate {
     font-size: 1.25rem;
   }
 
-  .btn {
+  #generate {
     padding: 1.75vh;
   }
 }
@@ -201,15 +217,15 @@ a:active {
 @media screen and (min-width: 1024px) {
   #password-generator {
     margin: 2.25vh 0 .5vh 0;
-    padding: 2.5vw;
-    width: 75vh;
+    padding: 2.5vw 2.5vw .75vw 2.5vw;
+    width: 75vh;    
   }
 
   header {
     font-size: 1.5rem;
   }
 
-  #password, #parameters, .btn {
+  #password, #generator, #generate {
     font-size: 1rem;
   }
 
@@ -217,15 +233,11 @@ a:active {
     height: 6rem;
   }
 
-  #parameters {
+  #generator {
     width: 80%;
   }
 
-  .btn {
-    width: 50%;
-  }
-
-  .btn:hover {
+  #generate:hover {
     background-color: var(--accent);
   }
 
@@ -240,11 +252,11 @@ a:active {
     margin: 1vh 0 .5vh 0;
   }
 
-  h2 {
+  h1 {
     font-size: 2.75rem;
   }
 
-  #parameters, .btn {
+  #generator, #generate {
     font-size: 1.25rem;
   }
 }
