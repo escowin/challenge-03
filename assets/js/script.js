@@ -43,6 +43,7 @@ const generatePassword = function(length, lowercase, uppercase, numerals, symbol
   let password = '';
   const selectedParameters = lowercase + uppercase + numerals + symbols;
 
+  // filter.any unchecked parameter is removed from parameterArray
   const parametersArray = [
     { lowercase },
     { uppercase },
@@ -50,6 +51,7 @@ const generatePassword = function(length, lowercase, uppercase, numerals, symbol
     { symbols }
   ].filter(selected => Object.values(selected)[0]);
 
+  // loop through the parameters thereby generating a preliminary password string
   for(let i = 0; i < length; i += selectedParameters) {
     parametersArray.forEach(parameter => {
       const parameters = Object.keys(parameter)[0];
@@ -57,10 +59,12 @@ const generatePassword = function(length, lowercase, uppercase, numerals, symbol
     });
   }
 
-  console.log(password);
-  // password has random characters in consistent parameter order.
+  // randomize.shuffle the string
+  var finalPassword = password.split('')
+    .sort(function(){return 0.5-Math.random()})
+    .join('');
 
-  return `generating password that is ${length} characters in length...`;
+  return finalPassword;
 };
 
 // logic.sync range slider & numeric input values
