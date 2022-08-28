@@ -36,11 +36,14 @@ numericInputEl.addEventListener('input', syncedValues);
 // logic.generating password
 const generatePassword = function(length, selectedLowercase, selectedUppercase, selectedNumerals, selectedSymbols) {
   selectedLowercase = lowercaseArr;
-  selectedUppercase = uppercaseEl;
+  selectedUppercase = uppercaseArr;
   selectedNumerals = numeralsArr;
   selectedSymbols = symbolsArr;
-  
-  console.log (selectedLowercase, selectedLowercase, selectedNumerals, selectedSymbols);
+
+  for (let i = 0; i < selectedLowercase.length; i++) {
+    console.log(selectedLowercase[i]);
+  };
+
   return `generating password that is ${length} characters in length...`;
 };
 
