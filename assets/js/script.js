@@ -12,7 +12,6 @@ const generateButton = document.getElementById('generate');
 // logic.random characters
 const randomLowercase = function() {
   const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-  console.log(lowercase)
   return lowercase[Math.floor(Math.random() * lowercase.length)];
 };
 
@@ -30,7 +29,6 @@ const randomSymbols = function() {
   const symbols = '`~!@#$%^&*()_+-={}|[]\:;<>?,./';
   return symbols[Math.floor(Math.random() * symbols.length)]
 };
-console.log(randomSymbols());
 
 // logic.random
 const random = {
@@ -43,7 +41,7 @@ const random = {
 // logic.generating password
 const generatePassword = function(length, lowercase, uppercase, numerals, symbols) {
   let password = '';
-  let setParameters = lowercase + uppercase + numerals + symbols;
+  const selectedParameters = lowercase + uppercase + numerals + symbols;
 
   const parametersArray = [
     { lowercase },
@@ -51,17 +49,16 @@ const generatePassword = function(length, lowercase, uppercase, numerals, symbol
     { numerals },
     { symbols }
   ].filter(selected => Object.values(selected)[0]);
-  console.log(parametersArray);
 
-  for(let i = 0; i < length; i += parametersArray) {
-    parametersArray.forEach(type => {
-      const parameters = Object.keys(type)[0];
-      console.log(parameters);
-
-      // password += random[parameters]();
+  for(let i = 0; i < length; i += selectedParameters) {
+    parametersArray.forEach(parameter => {
+      const parameters = Object.keys(parameter)[0];
+      password += random[parameters]();
     });
-    // console.log(i);
   }
+
+  console.log(password);
+  // password has random characters in consistent parameter order.
 
   return `generating password that is ${length} characters in length...`;
 };
