@@ -33,35 +33,38 @@ const syncedValues = function(e) {
 rangeSliderEl.addEventListener('input', syncedValues);
 numericInputEl.addEventListener('input', syncedValues);
 
+
+// logic.randomize
+const getRandomCharacters = function() {
+  console.log(`hey the password length is ${passwordLength}`);
+}
+
 // logic.generating password
 const generatePassword = function(length, selectedLowercase, selectedUppercase, selectedNumerals, selectedSymbols) {
+  passwordLength = length;
+  console.log(typeof passwordLength)
+
   if (selectedLowercase) {
-    selectedLowercase = lowercaseArr;
-    for (let i = 0; i < selectedLowercase.length; i++) {
-      console.log(selectedLowercase[i]);
-    }
+    const lowercase = lowercaseArr;
+    console.log(lowercase[Math.floor(Math.random() * lowercase.length)]);
   }
   
   if (selectedUppercase) {
-    selectedUppercase = uppercaseArr;
-    for (let i = 0; i < selectedUppercase.length; i++) {
-      console.log(selectedUppercase[i]);
-    }
+    const uppercase = uppercaseArr;
+    console.log(uppercase[Math.floor(Math.random() * uppercase.length)]);
   }
 
   if (selectedNumerals) {
-    selectedNumerals = numeralsArr;
-    for (let i = 0; i < selectedNumerals.length; i++) {
-      console.log(selectedNumerals[i]);
-    }
+    const numerals = numeralsArr;
+    console.log(numerals[Math.floor(Math.random() * numerals.length)]);
   }
 
   if (selectedSymbols) {
-    selectedSymbols = symbolsArr;
-    for (let i = 0; i < selectedSymbols.length; i++) {
-      console.log(selectedSymbols[i]);
-    }
+    const symbols = symbolsArr;
+    console.log(symbols[Math.floor(Math.random() * symbols.length)]);
   }
+
+  getRandomCharacters();
 
 
   return `generating password that is ${length} characters in length...`;
@@ -71,7 +74,8 @@ const generatePassword = function(length, selectedLowercase, selectedUppercase, 
 generatorFormEl.addEventListener('submit', e => {
   e.preventDefault();
 
-  const length = numericInputEl.value;
+  // length is now a number type
+  const length = +numericInputEl.value;
   const selectedLowercase = lowercaseEl.checked;
   const selectedUppercase = uppercaseEl.checked;
   const selectedNumerals = numeralsEl.checked;
