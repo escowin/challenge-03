@@ -1,27 +1,70 @@
 // data.dom
-const generatorFormEl = document.getElementById("generator");
-const passwordDisplayEl = document.getElementById("password-display");
-const rangeSliderEl = document.getElementById("range-slider");
-const numericInputEl = document.getElementById("numeric-input");
-const lowercaseEl = document.getElementById("lowercase");
-const uppercaseEl = document.getElementById("uppercase");
-const numeralsEl = document.getElementById("numerals");
-const symbolsEl = document.getElementById("symbols");
-const generateButton = document.getElementById("generate");
+const generatorFormEl = document.getElementById('generator');
+const passwordDisplayEl = document.getElementById('password-display');
+const rangeSliderEl = document.getElementById('range-slider');
+const numericInputEl = document.getElementById('numeric-input');
+const lowercaseEl = document.getElementById('lowercase');
+const uppercaseEl = document.getElementById('uppercase');
+const numeralsEl = document.getElementById('numerals');
+const symbolsEl = document.getElementById('symbols');
+const generateButton = document.getElementById('generate');
 
-// data.arrays
-const lowercaseArr = [
-  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-];
-const uppercaseArr = [
-  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-];
-const numeralsArr = [
-  '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
-];
-const symbolsArr= [
-  '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', "`", '{', '|', '}', '~'
-];
+// logic.random characters
+const randomLowercase = function() {
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  console.log(lowercase)
+  return lowercase[Math.floor(Math.random() * lowercase.length)];
+};
+
+const randomUppercase = function() {
+  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  return uppercase[Math.floor(Math.random() * uppercase.length)];
+};
+
+const randomNumerals = function() {
+  const numerals = '0123456789';
+  return numerals[Math.floor(Math.random() * numerals.length)];
+};
+
+const randomSymbols = function() {
+  const symbols = '`~!@#$%^&*()_+-={}|[]\:;<>?,./';
+  return symbols[Math.floor(Math.random() * symbols.length)]
+};
+console.log(randomSymbols());
+
+// logic.random
+const random = {
+  lowercase: randomLowercase,
+  uppercase: randomUppercase,
+  numerals: randomNumerals,
+  symbols: randomSymbols
+};
+
+// logic.generating password
+const generatePassword = function(length, lowercase, uppercase, numerals, symbols) {
+  let password = '';
+  let setParameters = lowercase + uppercase + numerals + symbols;
+
+  const parametersArray = [
+    { lowercase },
+    { uppercase },
+    { numerals },
+    { symbols }
+  ].filter(selected => Object.values(selected)[0]);
+  console.log(parametersArray);
+
+  for(let i = 0; i < length; i += parametersArray) {
+    parametersArray.forEach(type => {
+      const parameters = Object.keys(type)[0];
+      console.log(parameters);
+
+      // password += random[parameters]();
+    });
+    // console.log(i);
+  }
+
+  return `generating password that is ${length} characters in length...`;
+};
 
 // logic.sync range slider & numeric input values
 const syncedValues = function(e) {
@@ -33,48 +76,11 @@ const syncedValues = function(e) {
 rangeSliderEl.addEventListener('input', syncedValues);
 numericInputEl.addEventListener('input', syncedValues);
 
-
-// logic.randomize
-const getRandomCharacters = function() {
-  console.log(`hey the password length is ${passwordLength}`);
-}
-
-// logic.generating password
-const generatePassword = function(length, selectedLowercase, selectedUppercase, selectedNumerals, selectedSymbols) {
-  passwordLength = length;
-  console.log(typeof passwordLength)
-
-  if (selectedLowercase) {
-    const lowercase = lowercaseArr;
-    console.log(lowercase[Math.floor(Math.random() * lowercase.length)]);
-  }
-  
-  if (selectedUppercase) {
-    const uppercase = uppercaseArr;
-    console.log(uppercase[Math.floor(Math.random() * uppercase.length)]);
-  }
-
-  if (selectedNumerals) {
-    const numerals = numeralsArr;
-    console.log(numerals[Math.floor(Math.random() * numerals.length)]);
-  }
-
-  if (selectedSymbols) {
-    const symbols = symbolsArr;
-    console.log(symbols[Math.floor(Math.random() * symbols.length)]);
-  }
-
-  getRandomCharacters();
-
-
-  return `generating password that is ${length} characters in length...`;
-};
-
 // event-listener.checks criteria, calls generatePassword()
 generatorFormEl.addEventListener('submit', e => {
   e.preventDefault();
 
-  // length is now a number type
+  // logic.set length to number type
   const length = +numericInputEl.value;
   const selectedLowercase = lowercaseEl.checked;
   const selectedUppercase = uppercaseEl.checked;
@@ -82,18 +88,17 @@ generatorFormEl.addEventListener('submit', e => {
   const selectedSymbols = symbolsEl.checked;
 
   if (!selectedLowercase && !selectedUppercase && !selectedNumerals && !selectedSymbols) {
-    passwordDisplayEl.textContent = "your password would be " + length + " characters if you select at least one of the boxes.";
+    passwordDisplayEl.textContent = `your password would be ${length} characters if you select at least one of the boxes.`;
   } else {
     const password = generatePassword(length, selectedLowercase, selectedUppercase, selectedNumerals, selectedSymbols);
     passwordDisplayEl.textContent = password;
   }
 });
 
-
 // logic.current-date
 function currentYear() {
   let date = new Date().getFullYear();
-  const dateEl = document.getElementById("date")
+  const dateEl = document.getElementById('date')
   dateEl.textContent = date;
 }
 
