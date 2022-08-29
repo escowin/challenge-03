@@ -244,6 +244,7 @@ a:hover {
   #range-slider {
     width: 10vw;
   }
+
   #generate-button {
     margin-top: 1rem;
   }
@@ -279,11 +280,15 @@ a:hover {
     font-size: 1.5rem;
   }
 
- #generator-form, #generate-button {
+ #generator-form {
     font-size: 1rem;
   }
 
   footer {
     font-size: .75rem;
+  }
+
+  #password-display {
+    padding-top: 3rem;
   }
 }
