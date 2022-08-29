@@ -23,7 +23,7 @@ a {
 
 .word-break {
   word-break: break-all;
-
+  font-variant: normal;
 }
 
 .text-wrap {
