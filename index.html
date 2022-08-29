@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script defer src="./assets/js/script.js"></script>
   </head>
   <body>
-    <main id="password-generator">
+    <main>
       <header>
         <h1>Password generator</h1>
       </header>
@@ -18,12 +19,12 @@
       <textarea
         readonly
         id="password-display"
-        placeholder="Your new password awaits"
+        placeholder="Your password awaits."
         aria-label="Generated Password"
       ></textarea>
 
       <!-- password parameters -->
-      <form id="generator">
+      <form id="generator-form">
         <label for="length">Length</label>
         <div id="length-inputs">
           <input id="range-slider" type="range" min="8" max="128" value="12">
@@ -42,7 +43,7 @@
         <label for="symbols">Symbols</label>
         <input class="checkmark" type="checkbox" id="symbols">
 
-        <button id="generate" type="submit">Generate Password</button>             
+        <button id="generate-button" type="submit">generate password</button>             
       </form>
 
       <footer>

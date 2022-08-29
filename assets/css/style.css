@@ -15,44 +15,76 @@
 }
 
 /* typography */
-footer {
-  font-size: .75rem;
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 1s;
 }
 
-h1::selection, footer::selection, a::selection {
+.word-break {
+  word-break: break-all;
+
+}
+
+.text-wrap {
+  word-wrap: normal;
+}
+
+main {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--secondary);
+}
+
+header, #password-display, #numeric-input, #generate-button {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+#password-display, #numeric-input, #generate-button {
   color: var(--primary);
+  text-shadow: 0 0 .25rem var(--primary);
 }
 
-header, #password-generator, footer {
+header, #generator-form, footer {
   text-shadow: 0 0 1vw var(--secondary);
 }
 
-#password-generator, #password-display {
-  border-radius: 1rem;
+main, #password-display, #numeric-input {
   text-align: center;
+}
+
+#generator-form {
+  text-align: left;
+  font-size: 1rem;
+}
+
+#password-display, #generate-button {
+  font-size: 1.15rem;
+}
+
+#password-display::placeholder, #generate-button {
+  --initial: rgba(60, 32, 32, 0.432);
+  color: var(--initial);
+  text-shadow: 0 0 1.5vw var(--initial);
+}
+
+footer {
+  font-size: .5rem;
 }
 
 /* box */
 body {
-  color: var(--secondary);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-body, #password:focus {
   background-color: var(--primary);
 }
 
-#password::selection {
-  background-color: var(--secondary);
-}
-#password-generator {
+main {
   background-color: var(--tertiary);
   box-shadow: 0 0 5vw var(--secondary);
-  width: 80vw;
+  width: 90vw;
   margin: 5vh 0 2.5vh 0;
   padding: 5vw 5vw 2.5vw 5vw;
   justify-content: space-around;
@@ -60,49 +92,45 @@ body, #password:focus {
   flex-direction: column;
 }
 
+main, #password-display {
+  border-radius: 1rem;
+}
+
 #password-display {
-  color: var(--primary);
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   resize: none;
-  padding: 2.5vh;
-  height: 6rem;
+  padding: 1rem;
+  height: 8rem;
   margin: 2.5vh 0;
-  word-break: break-all;
-}
-
-#password-display, #generate, a {
   transition: 1s;
 }
 
-#password-display, #generate {
-  border: none;
-  width: 100%;
-  box-shadow: 0 0 2.5vw var(--secondary);
-}
-
-#password-display, #generate:active {
+#password-display, #generate-button {
   background-color: var(--accent);
+  box-shadow: inset 0 0 3vw var(--primary), 0 0 2.5vw var(--secondary);
+  border: none;
+  transition: 1s;
 }
 
-#password:focus {
-  color: var(--accent);
-  box-shadow: 0 0 2.5vw var(--primary), inset 0 0 2.5vw var(--accent);
-  font-weight: bolder;
-  text-shadow: 0 0 1vw var(--accent);
+#generate-button {
+  margin-top: 2rem;
+  padding: .75vh;
+  border-radius: .75rem;
+  grid-column: span 2;
+  cursor: pointer;
 }
 
-#generator {
+#generator-form {
   display: grid;
   grid-template-columns: auto auto;
   gap: 1vh 2vw;
   justify-content: center;
   align-items: center;
+  width: 100%;
   margin: 2.5vh auto 5vh auto;
-  text-align: left;
-  font-size: 1rem;
 }
 
 #length-inputs {
@@ -110,15 +138,17 @@ body, #password:focus {
   align-items: center;
 }
 
+#range-slider, #numeric-input {
+  background-color: var(--accent);
+  box-shadow: 0 0 1vw var(--accent);
+  outline: none;
+}
+
 #range-slider {
   appearance: none;
-  outline: none;
   margin: 0 1vw 0 0;
   opacity: 80%;
   height: 1.25vh;
-  color: var(--tertiary);
-  background-color: var(--accent);
-  box-shadow: 0 0 1vw var(--accent);
   border-radius: 1rem;
 }
 
@@ -130,20 +160,14 @@ body, #password:focus {
   cursor: pointer;
   height: .75rem;
   width: .75rem;
-  border-radius: 50%;
   border: none;
+  border-radius: 50%;
 }
 
 #numeric-input {
-  background-color: var(--accent);
-  box-shadow: 0 0 1vw var(--accent);
   width: 1.75rem;
-  outline: none;
-  border-radius: .2rem;
   border: none;
-  color: var(--primary);
-  text-shadow: 0 0 1.25vw var(--primary);
-  text-align: center;
+  border-radius: .2rem;
 }
 
 #numeric-input::-webkit-outer-spin-button,
@@ -156,6 +180,7 @@ body, #password:focus {
   -moz-appearance: textfield;
 }
 
+
 .checkmark {
   width: 1rem;
   height: 1rem;
@@ -164,29 +189,64 @@ body, #password:focus {
   box-shadow: 0 0 2vw var(--accent);
 }
 
-/* note : checked not responding */
-.checkmark:checked {
-  background-color: var(--secondary);
-}
-
-#generate {
+/* psuedoclasses */
+body *::selection {
   color: var(--primary);
-  margin-top: 1rem;
-  padding: .75vh 2vw;
-  border-radius: .75rem;
-  background-color: var(--secondary);
-  text-shadow: 0 0 .75vw var(--primary);
-  grid-column: span 2;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:active {
+a:active,
+a:hover {
   color: var(--accent);
-  text-shadow: 0 0 1vw var(--secondary);
+  text-shadow: 0 0 1vw var(--accent);
+}
+
+#password-display::selection {
+  background-color: var(--secondary);
+}
+
+#password-display:focus,
+#generate-button:active,
+#generate-button:hover {
+  box-shadow: inset 0 0 1rem var(--primary), 0 0 1rem var(--accent);
+}
+
+#generate-button:active,
+#generate-button:hover {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+/* display.mobile portrait-landscape */
+@media screen and (min-height: 375px) and (orientation: landscape) {
+  main {
+    margin: 0;
+    padding: 1.25vh 1.75vw .75vh 1.75vw;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 95vw;
+    grid-column-gap: 2vw;
+  }
+
+  header, footer {
+    grid-column: span 2;
+  }
+
+  header {
+    text-align: start;
+  }
+
+  #password-display {
+    margin: 0;
+    margin: 2.5vh 0 5vh 0;
+    height: auto;
+  }
+
+  #range-slider {
+    width: 10vw;
+  }
+  #generate-button {
+    margin-top: 1rem;
+  }
 }
 
 /* display.tablet */
@@ -195,68 +255,35 @@ a:active {
     font-size: 1.75rem;
   }
 
-  h1 {
-    font-size: 2.25rem;
-  }
-
-  #password-display {
-    margin: 5vh 0;
-    height: 8rem;
-  }
-
-  #password-display, #generate {
+  #password-display, #generate-button {
     font-size: 1.25rem;
   }
 
-  #generate {
+  #generate-button {
     padding: 1.75vh;
+  }
+
+  #generator-form {
+    grid-template-columns: 20% 60%;
   }
 }
 
 /* display.small-desktop */
 @media screen and (min-width: 1024px) {
-  #password-generator {
+  main {
     margin: 2.25vh 0 .5vh 0;
     padding: 2.5vw 2.5vw .75vw 2.5vw;
-    width: 75vh;    
   }
-
-  header {
+  
+  header, #password-display {
     font-size: 1.5rem;
   }
 
-  #password-display, #generator, #generate {
+ #generator-form, #generate-button {
     font-size: 1rem;
   }
 
-  #password-display {
-    height: 6rem;
-  }
-
-  #generator {
-    width: 80%;
-  }
-
-  #generate:hover {
-    background-color: var(--accent);
-  }
-
-  a:hover {
-    color: var(--accent);
-  }
-}
-
-/* display.large-desktop */
-@media screen and (min-width: 1440px) {
-  #password-generator {
-    margin: 1vh 0 .5vh 0;
-  }
-
-  h1 {
-    font-size: 2.75rem;
-  }
-
-  #generator, #generate {
-    font-size: 1.25rem;
+  footer {
+    font-size: .75rem;
   }
 }

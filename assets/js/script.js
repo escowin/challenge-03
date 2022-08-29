@@ -1,5 +1,5 @@
 // data.dom
-const generatorFormEl = document.getElementById('generator');
+const generatorFormEl = document.getElementById('generator-form');
 const passwordDisplayEl = document.getElementById('password-display');
 const rangeSliderEl = document.getElementById('range-slider');
 const numericInputEl = document.getElementById('numeric-input');
@@ -7,7 +7,7 @@ const lowercaseEl = document.getElementById('lowercase');
 const uppercaseEl = document.getElementById('uppercase');
 const numeralsEl = document.getElementById('numerals');
 const symbolsEl = document.getElementById('symbols');
-const generateButton = document.getElementById('generate');
+const generateButton = document.getElementById('generate-button');
 
 // logic.random characters
 const randomLowercase = function() {
@@ -60,11 +60,11 @@ const generatePassword = function(length, lowercase, uppercase, numerals, symbol
   }
 
   // randomize.shuffle the string
-  var finalPassword = password.split('')
+  const finalPassword = password.split('')
     .sort(function(){return 0.5-Math.random()})
     .join('');
 
-  return finalPassword;
+    return finalPassword;
 };
 
 // logic.sync range slider & numeric input values
@@ -89,9 +89,11 @@ generatorFormEl.addEventListener('submit', e => {
   const selectedSymbols = symbolsEl.checked;
 
   if (!selectedLowercase && !selectedUppercase && !selectedNumerals && !selectedSymbols) {
-    passwordDisplayEl.textContent = `your password would be ${length} characters if you select at least one of the boxes.`;
+    passwordDisplayEl.className = "text-wrap";
+    passwordDisplayEl.textContent = `Password would be ${length} characters in length if you check at least one of the boxes below...`;
   } else {
     const password = generatePassword(length, selectedLowercase, selectedUppercase, selectedNumerals, selectedSymbols);
+    passwordDisplayEl.className = "word-break";
     passwordDisplayEl.textContent = password;
   }
 });
