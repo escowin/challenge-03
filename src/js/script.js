@@ -1,5 +1,5 @@
 import "../css/style.css";
- 
+
 // data.dom
 const generatorFormEl = document.getElementById("generator-form");
 const passwordDisplayEl = document.getElementById("password-display");
@@ -9,7 +9,6 @@ const lowercaseEl = document.getElementById("lowercase");
 const uppercaseEl = document.getElementById("uppercase");
 const numeralsEl = document.getElementById("numerals");
 const symbolsEl = document.getElementById("symbols");
-const generateButton = document.getElementById("generate-button");
 const dateEl = document.getElementById("date");
 
 // logic.current-date
