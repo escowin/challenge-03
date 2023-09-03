@@ -1,108 +1,82 @@
 // data.dom
-const generatorFormEl = document.getElementById('generator-form');
-const passwordDisplayEl = document.getElementById('password-display');
-const rangeSliderEl = document.getElementById('range-slider');
-const numericInputEl = document.getElementById('numeric-input');
-const lowercaseEl = document.getElementById('lowercase');
-const uppercaseEl = document.getElementById('uppercase');
-const numeralsEl = document.getElementById('numerals');
-const symbolsEl = document.getElementById('symbols');
-const generateButton = document.getElementById('generate-button');
-
-// logic.random characters
-const randomLowercase = function() {
-  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-  return lowercase[Math.floor(Math.random() * lowercase.length)];
-};
-
-const randomUppercase = function() {
-  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  return uppercase[Math.floor(Math.random() * uppercase.length)];
-};
-
-const randomNumerals = function() {
-  const numerals = '0123456789';
-  return numerals[Math.floor(Math.random() * numerals.length)];
-};
-
-const randomSymbols = function() {
-  const symbols = '`~!@#$%^&*()_+-={}|[]\:;<>?,./';
-  return symbols[Math.floor(Math.random() * symbols.length)]
-};
-
-// logic.random
-const random = {
-  lowercase: randomLowercase,
-  uppercase: randomUppercase,
-  numerals: randomNumerals,
-  symbols: randomSymbols
-};
-
-// logic.generating password
-const generatePassword = function(length, lowercase, uppercase, numerals, symbols) {
-  let password = '';
-  const selectedParameters = lowercase + uppercase + numerals + symbols;
-
-  // filter.any unchecked parameter is removed from parameterArray
-  const parametersArray = [
-    { lowercase },
-    { uppercase },
-    { numerals },
-    { symbols }
-  ].filter(selected => Object.values(selected)[0]);
-
-  // loop through the parameters thereby generating a preliminary password string
-  for(let i = 0; i < length; i += selectedParameters) {
-    parametersArray.forEach(parameter => {
-      const parameters = Object.keys(parameter)[0];
-      password += random[parameters]();
-    });
-  }
-
-  // randomize.shuffle the string
-  const finalPassword = password.split('')
-    .sort(function(){return 0.5-Math.random()})
-    .join('');
-
-    return finalPassword;
-};
-
-// logic.sync range slider & numeric input values
-const syncedValues = function(e) {
-  const value = e.target.value;
-  rangeSliderEl.value = value;
-  numericInputEl.value = value;
-};
-
-rangeSliderEl.addEventListener('input', syncedValues);
-numericInputEl.addEventListener('input', syncedValues);
-
-// event-listener.checks criteria, calls generatePassword()
-generatorFormEl.addEventListener('submit', e => {
-  e.preventDefault();
-
-  // logic.set length to number type
-  const length = +numericInputEl.value;
-  const selectedLowercase = lowercaseEl.checked;
-  const selectedUppercase = uppercaseEl.checked;
-  const selectedNumerals = numeralsEl.checked;
-  const selectedSymbols = symbolsEl.checked;
-
-  if (!selectedLowercase && !selectedUppercase && !selectedNumerals && !selectedSymbols) {
-    passwordDisplayEl.className = "text-wrap";
-    passwordDisplayEl.textContent = `Password would be ${length} characters in length if you check at least one of the boxes below...`;
-  } else {
-    const password = generatePassword(length, selectedLowercase, selectedUppercase, selectedNumerals, selectedSymbols);
-    passwordDisplayEl.className = "word-break";
-    passwordDisplayEl.textContent = password;
-  }
-});
+const generatorFormEl = document.getElementById("generator-form");
+const passwordDisplayEl = document.getElementById("password-display");
+const rangeSliderEl = document.getElementById("range-slider");
+const numericInputEl = document.getElementById("numeric-input");
+const lowercaseEl = document.getElementById("lowercase");
+const uppercaseEl = document.getElementById("uppercase");
+const numeralsEl = document.getElementById("numerals");
+const symbolsEl = document.getElementById("symbols");
+const generateButton = document.getElementById("generate-button");
+const dateEl = document.getElementById("date");
 
 // logic.current-date
 function currentYear() {
-  let date = new Date().getFullYear();
-  const dateEl = document.getElementById('date')
+  const date = new Date().getFullYear();
   dateEl.textContent = date;
 }
 
+// logic.sync range slider & numeric input values
+function syncedValues(e) {
+  const value = e.target.value;
+  rangeSliderEl.value = value;
+  numericInputEl.value = value;
+}
+
+// logic.random characters
+const randomize = (set) => set[Math.floor(Math.random() * set.length)];
+
+// logic.random
+const charSets = {
+  lower: () => randomize("abcdefghijklmnopqrstuvwxyz"),
+  upper: () => randomize("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+  nums: () => randomize("0123456789"),
+  symbols: () => randomize("`~!@#$%^&*()_+-={}|[]:;<>?,./"),
+};
+
+// logic.generating password
+function generatePassword(length, lower, upper, nums, symbols) {
+  let password = "";
+  const selectedParams = lower + upper + nums + symbols;
+
+  // removes unchecked parameters are removed from array
+  const paramsArray = [{ lower }, { upper }, { nums }, { symbols }].filter(
+    (selected) => Object.values(selected)[0]
+  );
+
+  // loops through the parameters thereby generating a preliminary password string
+  for (let i = 0; i < length; i += selectedParams) {
+    paramsArray.forEach((parameter) => {
+      const parameters = Object.keys(parameter)[0];
+      password += charSets[parameters]();
+    });
+  }
+
+  // shuffles & returns the password string
+  return password.split("").sort(() => 0.5 - Math.random()).join("");
+}
+
+function displayPassword(e) {
+  e.preventDefault();
+  const length = +numericInputEl.value;
+  const $lower = lowercaseEl.checked;
+  const $upper = uppercaseEl.checked;
+  const $nums = numeralsEl.checked;
+  const $symbols = symbolsEl.checked;
+
+  // displays generated password when at least one parameter is selected 
+  if (!$lower && !$upper && !$nums && !$symbols) {
+    passwordDisplayEl.className = "text-wrap";
+    passwordDisplayEl.textContent = `Password would be ${length} characters in length if you check at least one of the boxes below...`;
+  } else {
+    const password = generatePassword(length, $lower, $upper, $nums, $symbols);
+    passwordDisplayEl.className = "word-break";
+    passwordDisplayEl.textContent = password;
+  }
+}
+
+// calls
 currentYear();
+rangeSliderEl.addEventListener("input", syncedValues);
+numericInputEl.addEventListener("input", syncedValues);
+generatorFormEl.addEventListener("submit", (e) => displayPassword(e));
