@@ -66,11 +66,9 @@ function displayPassword(e) {
 
   // displays generated password when at least one parameter is selected 
   if (!$lower && !$upper && !$nums && !$symbols) {
-    passwordDisplayEl.className = "text-wrap";
-    passwordDisplayEl.textContent = `Password would be ${length} characters in length if you check at least one of the boxes below...`;
+    passwordDisplayEl.textContent = `Select a parameter`;
   } else {
     const password = generatePassword(length, $lower, $upper, $nums, $symbols);
-    passwordDisplayEl.className = "word-break";
     passwordDisplayEl.textContent = password;
   }
 }
