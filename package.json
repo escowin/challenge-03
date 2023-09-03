@@ -4,6 +4,9 @@
   "description": "pwa that generates randomized passwords through user-selected parameters",
   "main": "index.js",
   "scripts": {
+    "webpack": "webpack --watch",
+    "build": "webpack",
+    "start:dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

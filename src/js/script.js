@@ -1,3 +1,5 @@
+import "../css/style.css";
+ 
 // data.dom
 const generatorFormEl = document.getElementById("generator-form");
 const passwordDisplayEl = document.getElementById("password-display");

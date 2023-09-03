@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#c97f7f" />
+    <meta name="description" content="generates customized random passwords" />
     <title>Password Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script defer src="./assets/js/script.js"></script>
+    <link rel="manifest" href="./dist/manifest.json" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Share+Tech+Mono&display=swap");
+    </style>
+    <script defer src="./dist/app.bundle.js"></script>
+    <script defer>
+      (function () {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker
+            .register("./service-worker.js")
+            .then(() => console.log("registered service worker"))
+            .catch((error) =>
+              console.log("service worker registration failed")
+            );
+        }
+      })();
+    </script>
   </head>
   <body>
     <main>
@@ -27,27 +43,36 @@
       <form id="generator-form">
         <label for="numeric-input">Length</label>
         <div id="length-inputs">
-          <input id="range-slider" type="range" min="8" max="128" value="12">
-          <input id="numeric-input" type="number" min="8" max="128" value="12">            
+          <input id="range-slider" type="range" min="8" max="128" value="12" />
+          <input
+            id="numeric-input"
+            type="number"
+            min="8"
+            max="128"
+            value="12"
+          />
         </div>
 
         <label for="lowercase">Lowercase</label>
-        <input class="checkmark" type="checkbox" id="lowercase">
+        <input class="checkmark" type="checkbox" id="lowercase" />
 
         <label for="uppercase">Uppercase</label>
-        <input class="checkmark" type="checkbox" id="uppercase">
+        <input class="checkmark" type="checkbox" id="uppercase" />
 
         <label for="numerals">Numerals</label>
-        <input class="checkmark" type="checkbox" id="numerals">
+        <input class="checkmark" type="checkbox" id="numerals" />
 
         <label for="symbols">Symbols</label>
-        <input class="checkmark" type="checkbox" id="symbols">
+        <input class="checkmark" type="checkbox" id="symbols" />
 
-        <button id="generate-button" type="submit">generate password</button>             
+        <button id="generate-button" type="submit">generate password</button>
       </form>
 
       <footer>
-        &copy;2021 - <span id="date"></span> <a href="https://github.com/escowin/password-generator" target="_blank">Edwin m. escobar</a>
+        &copy;2021 - <span id="date"></span>
+        <a href="https://github.com/escowin/password-generator" target="_blank"
+          >Edwin m. escobar</a
+        >
       </footer>
     </main>
   </body>
