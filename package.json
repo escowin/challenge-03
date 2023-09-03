@@ -1,7 +1,7 @@
 {
   "name": "password-generator",
-  "version": "1.0.0",
-  "description": "## Description ### [Repo](https://github.com/escowin/password-generator) ### [Live URL](https://escowin.github.io/password-generator)",
+  "version": "2.0.0",
+  "description": "pwa that generates randomized passwords through user-selected parameters",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
