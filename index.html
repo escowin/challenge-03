@@ -41,16 +41,12 @@
 
       <!-- password parameters -->
       <form id="generator-form">
-        <label for="numeric-input">Length</label>
+        <label for="num-input">Length</label>
         <div id="length-inputs">
-          <input id="range-slider" type="range" min="8" max="128" value="12" />
-          <input
-            id="numeric-input"
-            type="number"
-            min="8"
-            max="128"
-            value="12"
-          />
+          <label for="num-slider">
+            <input id="num-slider" type="range" min="8" max="128" value="12" />
+          </label>
+          <input id="num-input" type="number" min="8" max="128" value="12" />
         </div>
 
         <label for="lowercase">Lowercase</label>

@@ -3,8 +3,8 @@ import "../css/style.css";
 // data.dom
 const generatorFormEl = document.getElementById("generator-form");
 const passwordDisplayEl = document.getElementById("password-display");
-const rangeSliderEl = document.getElementById("range-slider");
-const numericInputEl = document.getElementById("numeric-input");
+const rangeSliderEl = document.getElementById("num-slider");
+const numericInputEl = document.getElementById("num-input");
 const lowercaseEl = document.getElementById("lowercase");
 const uppercaseEl = document.getElementById("uppercase");
 const numeralsEl = document.getElementById("numerals");

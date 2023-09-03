@@ -12,7 +12,6 @@ pwa that generates randomized passwords through user-selected parameters
 - [Usage](#usage)
 - [Features](#features)
 - [Credits](#credits)
-
 - [Author](#author)
 
 ## Installation

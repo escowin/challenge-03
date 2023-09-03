@@ -20,7 +20,7 @@ main {
   color: var(--secondary);
 }
 
-header, #password-display, #numeric-input, #generate-button {
+header, #password-display, #num-input, #generate-button {
   font-family: 'Share Tech Mono', monospace;
 }
 
@@ -35,7 +35,7 @@ a {
   font-variant: normal;
 }
 
-#password-display, #numeric-input, #generate-button {
+#password-display, #num-input, #generate-button {
   color: var(--primary);
   text-shadow: 0 0 .25rem var(--primary);
 }
@@ -44,7 +44,7 @@ header, #generator-form, footer {
   text-shadow: 0 0 1vw var(--secondary);
 }
 
-main, #password-display, #numeric-input {
+main, #password-display, #num-input {
   text-align: center;
 }
 
@@ -87,7 +87,7 @@ main {
   gap: 2rem;
 }
 
-main, #password-display, #range-slider {
+main, #password-display, #num-slider {
   border-radius: 1rem;
 }
 
@@ -119,7 +119,7 @@ main, #password-display, #range-slider {
 #generator-form {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1vh 1rem;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
 }
@@ -129,19 +129,19 @@ main, #password-display, #range-slider {
   align-items: center;
 }
 
-#range-slider, #numeric-input {
+#num-slider, #num-input {
   background-color: var(--accent);
   box-shadow: 0 0 1vw var(--accent);
   outline: none;
 }
 
-#range-slider {
+#num-slider {
   appearance: none;
   margin: 0 1vw 0 0;
   height: .5rem;
 }
 
-#range-slider::-webkit-slider-thumb {
+#num-slider::-webkit-slider-thumb {
   background-color: var(--primary);
   box-shadow: 0 0 .75vw var(--primary);
   appearance: none;
@@ -153,14 +153,14 @@ main, #password-display, #range-slider {
   border-radius: 50%;
 }
 
-#numeric-input {
+#num-input {
   width: 1.75rem;
   border: none;
   border-radius: .2rem;
 }
 
-#numeric-input::-webkit-outer-spin-button,
-#numeric-input::-webkit-inner-spin-button {
+#num-input::-webkit-outer-spin-button,
+#num-input::-webkit-inner-spin-button {
   appearance: none;
   -webkit-appearance: none;
   margin: 0;
@@ -223,7 +223,7 @@ a:hover {
     height: auto;
   }
 
-  #range-slider {
+  #num-slider {
     width: 10vw;
   }
 
