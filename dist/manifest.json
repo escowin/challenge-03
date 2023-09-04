@@ -38,11 +38,11 @@
     }
   ],
   "name": "password generator",
-  "short_name": "password gen",
+  "short_name": "f(pw)",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "../index.html",
   "description": "generates customized random passwords",
   "background_color": "#3c2020",
-  "theme_color": "#c97f7f"
+  "theme_color": "#3c2020"
 }

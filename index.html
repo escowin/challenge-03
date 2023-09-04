@@ -8,9 +8,6 @@
     <meta name="description" content="generates customized random passwords" />
     <title>Password Generator</title>
     <link rel="manifest" href="./dist/manifest.json" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Share+Tech+Mono&display=swap");
-    </style>
     <script defer src="./dist/app.bundle.js"></script>
     <script defer>
       (function () {
@@ -32,9 +29,7 @@
       </header>
 
       <!-- password display -->
-      <textarea
-        readonly
-        id="password-display"
+      <textarea readonly id="password-display"
         placeholder="Your password awaits."
         aria-label="Generated Password"
       ></textarea>
@@ -43,29 +38,29 @@
       <form id="generator-form">
         <label for="num-input">Length</label>
         <div id="length-inputs">
-          <label for="num-slider" style="font-size: 1px;">slider
+          <label for="num-slider" style="font-size: 1px; color: transparent;">slider
             <input id="num-slider" type="range" min="8" max="128" value="12" />
           </label>
           <input id="num-input" type="number" min="8" max="128" value="12" />
         </div>
 
         <label for="lowercase">Lowercase</label>
-        <input class="checkmark" type="checkbox" id="lowercase" />
+        <input type="checkbox" id="lowercase" />
 
         <label for="uppercase">Uppercase</label>
-        <input class="checkmark" type="checkbox" id="uppercase" />
+        <input type="checkbox" id="uppercase" />
 
         <label for="numerals">Numerals</label>
-        <input class="checkmark" type="checkbox" id="numerals" />
+        <input type="checkbox" id="numerals" />
 
         <label for="symbols">Symbols</label>
-        <input class="checkmark" type="checkbox" id="symbols" />
+        <input type="checkbox" id="symbols" />
 
         <button id="generate-button" type="submit">generate password</button>
       </form>
 
       <footer>
-        &copy;2021 - <span id="date"></span>
+        &copy;<span id="date"></span>
         <a href="https://github.com/escowin/password-generator" target="_blank"
           >Edwin m. escobar</a
         >

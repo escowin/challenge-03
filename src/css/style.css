@@ -1,63 +1,96 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../txt//Montserrat-ExtraLight.ttf') format('tff');
+}
+
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('../txt//ShareTechMono-Regular.ttf') format('tff');
+}
+
 :root {
   --primary: rgb(12, 3, 3);
   --secondary: rgb(241, 184, 184, 0.9);
   --accent: rgba(255, 216, 216, 0.9);
   --initial: rgba(60, 32, 32, 0.9);
+  --box-shadow: 0 0 1rem;
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-variant: small-caps;
+}
+
+/* color */
+*::selection {
+  color: var(--primary);
 }
 
 /* typography */
 main {
-  font-family: 'Montserrat', sans-serif;
   color: var(--secondary);
+  font-variant: small-caps;
 }
 
-header, #password-display, #num-input, #generate-button {
+footer, label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+header,
+textarea,
+#num-input,
+button {
   font-family: 'Share Tech Mono', monospace;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: 1s;
 }
 
-#password-display {
+a:active,
+a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 1vw var(--accent);
+}
+
+textarea {
   word-break: break-all;
   font-variant: normal;
 }
 
-#password-display, #num-input, #generate-button {
+textarea,
+#num-input,
+button {
   color: var(--primary);
   text-shadow: 0 0 .25rem var(--primary);
 }
 
-header, #generator-form, footer {
+header,
+form,
+footer {
   text-shadow: 0 0 1vw var(--secondary);
 }
 
-main, #password-display, #num-input {
+main,
+textarea,
+#num-input {
   text-align: center;
 }
 
-#generator-form {
+form {
   text-align: left;
 }
 
-#password-display::placeholder, #generate-button {
+textarea::placeholder {
   color: var(--initial);
   text-shadow: 0 0 1.5vw var(--initial);
 }
 
-#password-display, #generate-button, #generator-form {
+textarea,
+button,
+form {
   font-size: 1rem;
 }
 
@@ -67,69 +100,75 @@ footer {
 
 /* box */
 body {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: var(--primary);
 }
 
 main {
-  box-shadow: 0 0 5vw var(--secondary);
-  width: 90vw;
-  padding: 5vw 5vw 2.5vw 5vw;
+  box-shadow: var(--box-shadow) var(--secondary);
+  padding: 1.25rem 1.25rem .25rem 1.25rem;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-main, #password-display, #num-slider {
+main,
+textarea,
+#num-slider {
   border-radius: 1rem;
 }
 
-#password-display {
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  resize: none;
+textarea {
   padding: 1rem;
   height: 8rem;
+  resize: none;
 }
 
-#password-display, #generate-button {
+textarea:focus {
+  box-shadow: inset var(--box-shadow) var(--primary), var(--box-shadow) var(--accent);
+  outline: none;
+}
+
+textarea::selection {
+  background-color: var(--secondary);
+}
+
+textarea,
+button {
   background-color: var(--accent);
-  box-shadow: inset 0 0 3vw var(--primary), 0 0 2.5vw var(--secondary);
+  box-shadow: inset var(--box-shadow) var(--primary);
   border: none;
-  transition: 1s;
 }
 
-#generate-button {
+button {
   margin-top: 2rem;
-  padding: .75vh;
+  padding: .75rem;
   border-radius: .75rem;
   grid-column: span 2;
   cursor: pointer;
 }
 
-#generator-form {
+button:active,
+button:hover {
+  box-shadow: inset var(--box-shadow) var(--primary), var(--box-shadow) var(--accent);
+  color: var(--primary);
+}
+
+form {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: max-content 1fr;
   gap: 1rem;
-  justify-content: center;
   align-items: center;
 }
 
-#length-inputs {
-  display: flex;
-  align-items: center;
-}
-
-#num-slider, #num-input {
+#num-slider,
+#num-input {
   background-color: var(--accent);
-  box-shadow: 0 0 1vw var(--accent);
+  box-shadow: var(--box-shadow) var(--accent);
   outline: none;
 }
 
@@ -141,7 +180,7 @@ main, #password-display, #num-slider {
 
 #num-slider::-webkit-slider-thumb {
   background-color: var(--primary);
-  box-shadow: 0 0 .75vw var(--primary);
+  box-shadow: var(--box-shadow) var(--primary);
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
@@ -164,43 +203,39 @@ main, #password-display, #num-slider {
   margin: 0;
 }
 
-.checkmark {
+input[type='checkbox'] {
   width: 1rem;
   height: 1rem;
   border-radius: .25rem;
   background-color: var(--accent);
-  box-shadow: 0 0 2vw var(--accent);
+  box-shadow: var(--box-shadow) var(--accent);
 }
 
-/* psuedoclasses */
-body *::selection {
-  color: var(--primary);
+/* display.tablet */
+@media screen and (min-width: 768px) {
+  a {
+    transition: color 1s, text-shadow 1s;
+  }
+
+  header {
+    font-size: 1.75rem;
+  }
+
+  textarea,
+  button {
+    font-size: 1.25rem;
+    transition: box-shadow 1s;
+  }
+
+  button {
+    padding: 1.75vw;
+    transition: box-shadow 1s;
+  }
 }
 
-a:active,
-a:hover {
-  color: var(--accent);
-  text-shadow: 0 0 1vw var(--accent);
-}
+/* display.desktop */
+@media screen and (min-width: 1024px) {
 
-#password-display::selection {
-  background-color: var(--secondary);
-}
-
-#password-display:focus,
-#generate-button:active,
-#generate-button:hover {
-  box-shadow: inset 0 0 1rem var(--primary), 0 0 1rem var(--accent);
-}
-
-#generate-button:active,
-#generate-button:hover {
-  background-color: var(--accent);
-  color: var(--primary);
-}
-
-/* display.mobile portrait-landscape */
-@media screen and (min-height: 375px) and (orientation: landscape) {
   main {
     padding: 1.25vh 1.75vw .75vh 1.75vw;
     display: grid;
@@ -209,61 +244,34 @@ a:hover {
     grid-column-gap: 2vw;
   }
 
-  header, footer {
-    grid-column: span 2;
+  footer {
+    font-size: .75rem;
   }
 
   header {
     text-align: start;
   }
 
-  #password-display {
-    height: auto;
+  header,
+  footer {
+    grid-column: span 2;
   }
 
-  #num-slider {
-    width: 10vw;
-  }
-
-  #generate-button {
-    margin-top: 1rem;
-  }
-}
-
-/* display.tablet */
-@media screen and (min-width: 768px) {
-  header {
-    font-size: 1.75rem;
-  }
-
-  #password-display, #generate-button {
-    font-size: 1.25rem;
-  }
-
-  #generate-button {
-    padding: 1.75vw;
-  }
-}
-
-/* display.desktop */
-@media screen and (min-width: 1024px) {
-  main {
-    padding: 2.5vw 2.5vw .75vw 2.5vw;
-  }
-  
-  header, #password-display {
+  header,
+  textarea {
     font-size: 1.5rem;
   }
 
- #generator-form {
+  button {
+    margin-top: 1rem;
+  }
+
+  form {
     font-size: 1rem;
   }
 
-  footer {
-    font-size: .75rem;
-  }
-
-  #password-display {
+  textarea {
     padding-top: 3rem;
+    height: auto;
   }
 }

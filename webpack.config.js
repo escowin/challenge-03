@@ -19,6 +19,11 @@ module.exports = {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
+        {
+          // preprocesses fonts
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+        },
       ],
     },
     plugins: [
@@ -30,11 +35,11 @@ module.exports = {
         // `manifest.json` object key-values
         publicPath: "./",
         name: "password generator",
-        short_name: "password gen",
+        short_name: "f(pw)",
         description: "generates customized random passwords",
         start_url: "../index.html",
         background_color: "#3c2020",
-        theme_color: "#c97f7f",
+        theme_color: "#3c2020",
         fingerprints: false,
         inject: false,
         icons: [
