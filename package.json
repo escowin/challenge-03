@@ -1,6 +1,6 @@
 {
   "name": "password-generator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "pwa that generates randomized passwords through user-selected parameters",
   "main": "index.js",
   "scripts": {

@@ -23,13 +23,16 @@ module.exports = {
           // preprocesses fonts
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
           type: 'asset/resource',
+          generator: {
+            filename: "assets/txt/[name][ext]",
+          },
         },
       ],
     },
     plugins: [
       new BundleAnalyzerPlugin({
         // "static" generates `report.html`. "disable" stops report generation
-        analyzerMode: "disable",
+        analyzerMode: "static",
       }),
       new WebpackPwaManifest({
         // `manifest.json` object key-values

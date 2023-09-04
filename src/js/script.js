@@ -1,10 +1,10 @@
 import "../css/style.css";
 
 // data.dom
-const generatorFormEl = document.getElementById("generator-form");
+const formEl = document.getElementById("generator-form");
 const passwordDisplayEl = document.getElementById("password-display");
 const rangeSliderEl = document.getElementById("num-slider");
-const numericInputEl = document.getElementById("num-input");
+const numInputEl = document.getElementById("num-input");
 const lowercaseEl = document.getElementById("lowercase");
 const uppercaseEl = document.getElementById("uppercase");
 const numeralsEl = document.getElementById("numerals");
@@ -12,7 +12,7 @@ const symbolsEl = document.getElementById("symbols");
 const dateEl = document.getElementById("date");
 
 // logic.current-date
-function currentYear() {
+async function currentYear() {
   const date = new Date().getFullYear();
   dateEl.textContent = date;
 }
@@ -21,7 +21,7 @@ function currentYear() {
 function syncedValues(e) {
   const value = e.target.value;
   rangeSliderEl.value = value;
-  numericInputEl.value = value;
+  numInputEl.value = value;
 }
 
 // logic.random characters
@@ -59,7 +59,7 @@ function generatePassword(length, lower, upper, nums, symbols) {
 
 function displayPassword(e) {
   e.preventDefault();
-  const length = +numericInputEl.value;
+  const length = +numInputEl.value;
   const $lower = lowercaseEl.checked;
   const $upper = uppercaseEl.checked;
   const $nums = numeralsEl.checked;
@@ -77,5 +77,5 @@ function displayPassword(e) {
 // calls
 currentYear();
 rangeSliderEl.addEventListener("input", syncedValues);
-numericInputEl.addEventListener("input", syncedValues);
-generatorFormEl.addEventListener("submit", (e) => displayPassword(e));
+numInputEl.addEventListener("input", syncedValues);
+formEl.addEventListener("submit", (e) => displayPassword(e));

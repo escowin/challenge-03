@@ -1,5 +1,5 @@
 const APP_PREFIX = "PasswordGenerator-";
-const VERSION = "2.0.0";
+const VERSION = "2.0.1";
 const CACHE_NAME = APP_PREFIX + VERSION;
 
 // cache of essential files
@@ -8,6 +8,8 @@ const FILES_TO_CACHE = [
   "./service-worker.js",
   "./dist/app.bundle.js",
   "./dist/manifest.json",
+  "./dist/assets/txt/Montserrat-ExtraLight.ttf",
+  "./dist/assets/txt/ShareTechMono-Regular.ttf",
 ];
 
 // installs service worker
