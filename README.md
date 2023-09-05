@@ -15,10 +15,14 @@ pwa that generates randomized passwords through user-selected parameters
 - [Author](#author)
 
 ## Installation
+### Local machine
 Run the following command to install necessary dependencies:
 ```
 $ npm i
 ```
+### Browser via [live URL](https://escowin.github.io/password-generator)
+- Desktop : click install icon in address bar.
+- iOS: click 'Add to Home Screen'.
 
 ## Test
 Run the following command to run tests:
@@ -32,15 +36,19 @@ Run the following command to run app:
 $ npm run start:dev
 ```
 
-![screenshot](./assets/images/password-generator.jpg)
+![screenshot](./assets/img/password-generator-lg.jpg)
 
 ## Features
-customized password generation based on selected parameters
+- Customizable password generation
+- Offline functionality
+- PWA Optimization
+
+![light audit](./assets/img/lighthouse-audit.jpg)
 
 ## Credits
-- Languages: HTML, CSS, Javascript
-- Frameworks: Node
-- Libraries: Webpack
+- Languages: HTML, CSS, JavaScript
+- Frameworks: [Node](https://nodejs.org/)
+- Libraries: [webpack](https://webpack.js.org/), et al.
 
 ## Author
 ### edwin escobar

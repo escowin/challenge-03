@@ -41,8 +41,8 @@ module.exports = {
         short_name: "f(pw)",
         description: "generates customized random passwords",
         start_url: "../index.html",
-        background_color: "#3c2020",
-        theme_color: "#3c2020",
+        background_color: "#2e2121",
+        theme_color: "#2e2121",
         fingerprints: false,
         inject: false,
         icons: [
