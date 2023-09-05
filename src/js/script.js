@@ -1,6 +1,5 @@
 import "../css/style.css";
-// import { development } from "./dev";
-// development();
+
 // data.dom
 const formEl = document.getElementById("generator-form");
 const passwordDisplayEl = document.getElementById("password-display");
@@ -68,7 +67,7 @@ function displayPassword(e) {
 
   // displays generated password when at least one parameter is selected 
   if (!$lower && !$upper && !$nums && !$symbols) {
-    passwordDisplayEl.textContent = `Select a parameter`;
+    passwordDisplayEl.textContent = `Select at least one character set`;
   } else {
     const password = generatePassword(length, $lower, $upper, $nums, $symbols);
     passwordDisplayEl.textContent = password;

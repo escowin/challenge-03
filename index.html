@@ -22,13 +22,14 @@
       })();
     </script>
   </head>
-  <body>
-    <header><h1 class="light-txt">Password generator</h1></header>
+  <body class="flex">
+    <header class="flex light-txt mono"><h1>Password generator</h1></header>
 
-    <main>
+    <main class="flex">
       <!-- password display -->
       <textarea
         readonly
+        class="mono"
         id="password-display"
         placeholder="Your password awaits."
         aria-label="Generated Password"
@@ -37,14 +38,14 @@
       <!-- password parameters -->
       <form id="generator-form">
         <p class="light-txt">Length</p>
-        <p id="num-inputs">
+        <div class="flex" id="num-inputs">
           <label for="num-slider">slider input
             <input id="num-slider" type="range" min="8" max="128" value="12" />
           </label>
           <label for="num-input">numeric input
-            <input id="num-input" type="number" min="8" max="128" value="12" />
+            <input class="mono" id="num-input" type="number" min="8" max="128" value="12" />
           </label>
-        </p>
+        </div>
 
         <label class="light-txt" for="lowercase">Lowercase</label>
         <input type="checkbox" id="lowercase" />
@@ -58,7 +59,7 @@
         <label class="light-txt" for="symbols">Symbols</label>
         <input type="checkbox" id="symbols" />
 
-        <button id="generate-button" type="submit">generate password</button>
+        <button class="mono" id="generate-button" type="submit">GENERATE PASSWORD</button>
       </form>
     </main>
 
