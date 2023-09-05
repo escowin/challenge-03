@@ -1,6 +1,6 @@
-// import "../css/style.css";
-import { development } from "./dev";
-development();
+import "../css/style.css";
+// import { development } from "./dev";
+// development();
 // data.dom
 const formEl = document.getElementById("generator-form");
 const passwordDisplayEl = document.getElementById("password-display");
