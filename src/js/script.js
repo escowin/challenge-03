@@ -12,6 +12,8 @@ const symbolsEl = document.getElementById("symbols");
 const dateEl = document.getElementById("date");
 const copyBtn = document.getElementById("copy-btn");
 
+const warnings = ["select at least 1 character set", "generate a password"]
+
 // logic.current-date
 async function currentYear() {
   const date = new Date().getFullYear();
@@ -68,7 +70,7 @@ function displayPassword(e) {
 
   // displays generated password when at least one parameter is selected 
   if (!$lower && !$upper && !$nums && !$symbols) {
-    displayEl.textContent = `Select at least one character set`;
+    displayEl.textContent = warnings[0];
   } else {
     const password = generatePassword(length, $lower, $upper, $nums, $symbols);
     displayEl.textContent = password;
@@ -79,12 +81,16 @@ async function copyPassword(e) {
   e.preventDefault()
   let text = displayEl.value
   console.log(text)
-
-  try {
-    await navigator.clipboard.writeText(text)
-  } catch (err) {
-    console.error(err)
+  if (displayEl.value && displayEl.value !== warnings[0] && displayEl.value !== warnings[1]) {
+    try {
+      await navigator.clipboard.writeText(text)
+    } catch (err) {
+      console.error(err)
+    }    
+  } else {
+    displayEl.innerText = warnings[1]
   }
+
   
 }
 
