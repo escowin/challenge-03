@@ -12,7 +12,7 @@ const symbolsEl = document.getElementById("symbols");
 const dateEl = document.getElementById("date");
 const copyBtn = document.getElementById("copy-btn");
 
-const warnings = ["select at least 1 character set", "generate a password"]
+const msgs = ["select at least 1 character set", "generate a password"];
 
 // logic.current-date
 async function currentYear() {
@@ -57,7 +57,10 @@ function generatePassword(length, lower, upper, nums, symbols) {
   }
 
   // shuffles & returns the password string
-  return password.split("").sort(() => 0.5 - Math.random()).join("");
+  return password
+    .split("")
+    .sort(() => 0.5 - Math.random())
+    .join("");
 }
 
 function displayPassword(e) {
@@ -68,30 +71,29 @@ function displayPassword(e) {
   const $nums = numeralsEl.checked;
   const $symbols = symbolsEl.checked;
 
-  // displays generated password when at least one parameter is selected 
+  // displays generated password when at least one parameter is selected
   if (!$lower && !$upper && !$nums && !$symbols) {
-    displayEl.textContent = warnings[0];
+    displayEl.textContent = msgs[0];
   } else {
     const password = generatePassword(length, $lower, $upper, $nums, $symbols);
     displayEl.textContent = password;
   }
 }
 
+// copies password to clipboard
 async function copyPassword(e) {
-  e.preventDefault()
-  let text = displayEl.value
-  console.log(text)
-  if (displayEl.value && displayEl.value !== warnings[0] && displayEl.value !== warnings[1]) {
-    try {
-      await navigator.clipboard.writeText(text)
-    } catch (err) {
-      console.error(err)
-    }    
-  } else {
-    displayEl.innerText = warnings[1]
-  }
+  e.preventDefault();
+  let text = displayEl.value;
 
-  
+  if (displayEl.value && !msgs.some((msg) => msg === displayEl.value)) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error(err);
+    }
+  } else {
+    displayEl.innerText = msgs[1];
+  }
 }
 
 // calls
@@ -99,4 +101,4 @@ currentYear();
 rangeSliderEl.addEventListener("input", syncedValues);
 numInputEl.addEventListener("input", syncedValues);
 formEl.addEventListener("submit", (e) => displayPassword(e));
-copyBtn.addEventListener("click", (e) => copyPassword(e))
+copyBtn.addEventListener("click", (e) => copyPassword(e));
