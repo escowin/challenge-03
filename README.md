@@ -40,6 +40,7 @@ $ npm run start:dev
 
 ## Features
 - Customizable password generation
+- Copy passwords to clipboard
 - Offline functionality
 - PWA Optimization
 
@@ -48,7 +49,7 @@ $ npm run start:dev
 ## Credits
 - Languages: HTML, CSS, JavaScript
 - Frameworks: [Node](https://nodejs.org/)
-- Libraries: [webpack](https://webpack.js.org/), et al.
+- Libraries: [webpack](https://webpack.js.org/), [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
 
 ## Author
 ### edwin escobar

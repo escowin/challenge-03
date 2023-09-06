@@ -61,8 +61,11 @@ body {
   padding: 0 2rem;
 }
 
+#btn-wrapper {
+    grid-column: span 2;
+}
+
 button {
-  grid-column: span 2;
   border-radius: var(--corner);
   padding: .5rem 0;
   border: none;

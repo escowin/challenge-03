@@ -2,7 +2,7 @@ import "../css/style.css";
 
 // data.dom
 const formEl = document.getElementById("generator-form");
-const passwordDisplayEl = document.getElementById("password-display");
+const displayEl = document.getElementById("password-display");
 const rangeSliderEl = document.getElementById("num-slider");
 const numInputEl = document.getElementById("num-input");
 const lowercaseEl = document.getElementById("lowercase");
@@ -10,6 +10,7 @@ const uppercaseEl = document.getElementById("uppercase");
 const numeralsEl = document.getElementById("numerals");
 const symbolsEl = document.getElementById("symbols");
 const dateEl = document.getElementById("date");
+const copyBtn = document.getElementById("copy-btn");
 
 // logic.current-date
 async function currentYear() {
@@ -67,11 +68,24 @@ function displayPassword(e) {
 
   // displays generated password when at least one parameter is selected 
   if (!$lower && !$upper && !$nums && !$symbols) {
-    passwordDisplayEl.textContent = `Select at least one character set`;
+    displayEl.textContent = `Select at least one character set`;
   } else {
     const password = generatePassword(length, $lower, $upper, $nums, $symbols);
-    passwordDisplayEl.textContent = password;
+    displayEl.textContent = password;
   }
+}
+
+async function copyPassword(e) {
+  e.preventDefault()
+  let text = displayEl.value
+  console.log(text)
+
+  try {
+    await navigator.clipboard.writeText(text)
+  } catch (err) {
+    console.error(err)
+  }
+  
 }
 
 // calls
@@ -79,3 +93,4 @@ currentYear();
 rangeSliderEl.addEventListener("input", syncedValues);
 numInputEl.addEventListener("input", syncedValues);
 formEl.addEventListener("submit", (e) => displayPassword(e));
+copyBtn.addEventListener("click", (e) => copyPassword(e))
