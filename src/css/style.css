@@ -10,8 +10,9 @@
 
 :root {
   --dark: rgb(46, 33, 33);
-  --light: rgb(241, 184, 184, 0.9);
+  --light: rgb(241, 184, 184);
   --accent: rgba(255, 216, 216, 0.55);
+  --white: rgb(255, 255, 255);
   --shadow: 0 0 1rem;
   --corner: .5rem;
 }
@@ -43,7 +44,7 @@ a {
 }
 
 a:hover {
-  color: white;
+  color: var(--white);
 }
 
 .light-txt {
@@ -55,17 +56,21 @@ body {
   background-color: var(--dark);
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   height: 100vh;
   font-variant: small-caps;
   padding: 0 2rem;
 }
 
 #btn-wrapper {
-    grid-column: span 2;
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
 }
 
 button {
+  background-color: var(--white);
   border-radius: var(--corner);
   padding: .5rem 0;
   border: none;
@@ -77,7 +82,7 @@ button {
 button:active,
 button:hover {
   color: var(--light);
-  background-color: var(--dark);
+  background-color: transparent;
 }
 
 form {
@@ -159,6 +164,7 @@ textarea {
   resize: none;
   border-radius: var(--corner);
   padding: 1rem 2rem;
+  background-color: var(--white);
   box-shadow: var(--shadow) var(--light);
   text-shadow: var(--shadow) var(--dark);
   word-break: break-all;

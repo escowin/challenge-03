@@ -1,5 +1,5 @@
 const APP_PREFIX = "PasswordGenerator-";
-const VERSION = "2.0.2";
+const VERSION = "2.1.0";
 const CACHE_NAME = APP_PREFIX + VERSION;
 
 // cache of essential files
