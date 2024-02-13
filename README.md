@@ -36,7 +36,7 @@ Run the following command to run app:
 $ npm run start:dev
 ```
 
-![screenshot](./assets/img/display-lg.jpg)
+![screenshot](./assets/img/password-generator-lg.jpg)
 
 ## Features
 - Customizable password generation
